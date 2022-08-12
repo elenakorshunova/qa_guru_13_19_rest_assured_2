@@ -3,11 +3,13 @@ package tests;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.Cookie;
 
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
+import static helpers.CustomApiListener.withCustomTemplates;
 import static io.restassured.RestAssured.given;
 import static tests.TestData.*;
 
@@ -18,6 +20,7 @@ public class DemowebshopTests extends TestBase {
     void registerNewUser() {
 
         given()
+                .filter(withCustomTemplates())
                 .contentType("application/x-www-form-urlencoded")
                 .cookie("ARRAffinity=92eb765899e80d8de4d490df907547e5cb10de899e8b754a4d5fa1a7122fad69")
                 .formParam("FirstName", FIRST_NAME)
@@ -25,9 +28,11 @@ public class DemowebshopTests extends TestBase {
                 .formParam("Email", EMAIL)
                 .formParam("Password", PASSWORD)
                 .formParam("ConfirmPassword", PASSWORD)
+                .log().all()
                 .when()
                 .post("/register")
                 .then()
+                .log().all()
                 .statusCode(302)
                 .extract().cookie(COOKIE_NAME);
 

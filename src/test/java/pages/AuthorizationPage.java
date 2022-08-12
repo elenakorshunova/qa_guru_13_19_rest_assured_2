@@ -24,9 +24,11 @@ public class AuthorizationPage {
                 .contentType("application/x-www-form-urlencoded")
                 .formParam("Email", EMAIL_AUTH)
                 .formParam("Password", PASSWORD_AUTH)
+                .log().all()
                 .when()
                 .post("/login")
                 .then()
+                .log().all()
                 .statusCode(302)
                 .extract()
                 .cookie(COOKIE_NAME);
