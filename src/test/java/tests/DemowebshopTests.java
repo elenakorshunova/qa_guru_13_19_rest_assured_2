@@ -1,6 +1,7 @@
 package tests;
 
 import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,7 +36,7 @@ public class DemowebshopTests extends TestBase {
                 .statusCode(302)
                 .extract().header("Location");
 
-        open("http://demowebshop.tricentis.com/registerresult/1");
+        Selenide.open("http://demowebshop.tricentis.com/registerresult/1");
         $(".result").shouldHave(Condition.text("Your registration completed"));
     }
 
