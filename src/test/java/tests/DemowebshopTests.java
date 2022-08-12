@@ -29,13 +29,13 @@ public class DemowebshopTests extends TestBase {
                 .formParam("ConfirmPassword", PASSWORD)
                 .log().all()
                 .when()
-                .post("/register")
+                .post("http://demowebshop.tricentis.com/register")
                 .then()
                 .log().all()
                 .statusCode(302)
                 .extract().cookie(COOKIE_NAME);
 
-        open("/registerresult/1");
+        open("http://demowebshop.tricentis.com/registerresult/1");
         $(".result").shouldHave(Condition.text("Your registration completed"));
     }
 
@@ -48,9 +48,9 @@ public class DemowebshopTests extends TestBase {
 
         authorizationPage.openLoginPage();
         WebDriverRunner.getWebDriver().manage().addCookie(authCookie);
-        open("");
+        open("http://demowebshop.tricentis.com");
         authorizationPage.checkUserAuthorization();
-        open("/customer/info");
+        open("http://demowebshop.tricentis.com/customer/info");
         $("#FirstName").setValue(FIRST_NAME);
         $("#LastName").setValue(LAST_NAME);
         $("[name='save-info-button']").click();

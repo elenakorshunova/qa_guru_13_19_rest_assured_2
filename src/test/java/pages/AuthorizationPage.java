@@ -14,7 +14,7 @@ import static tests.TestData.*;
 public class AuthorizationPage {
     @Step("Open login page")
     public void openLoginPage() {
-        open("/login");
+        open("http://demowebshop.tricentis.com/login");
     }
 
     @Step("Authorization API test")
@@ -26,7 +26,7 @@ public class AuthorizationPage {
                 .formParam("Password", PASSWORD_AUTH)
                 .log().all()
                 .when()
-                .post("/login")
+                .post("http://demowebshop.tricentis.com/login")
                 .then()
                 .log().all()
                 .statusCode(302)
