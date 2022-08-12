@@ -27,9 +27,8 @@ public class TestBase {
         Configuration.browserCapabilities = capabilities;
         Configuration.baseUrl = "http://demowebshop.tricentis.com";
         RestAssured.baseURI = "http://demowebshop.tricentis.com";
-        String remoteBrowser = System.getProperty("remote", "selenoid.autotests.cloud/wd/hub");
         Configuration.remote = String.format("https://%s:%s@%s", credentialsConfig.login(), credentialsConfig.password(),
-                remoteBrowser);
+                credentialsConfig.remoteBrowser());
     }
 
     @AfterEach
