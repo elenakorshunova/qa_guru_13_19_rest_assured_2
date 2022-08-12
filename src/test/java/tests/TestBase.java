@@ -24,6 +24,7 @@ public class TestBase {
         capabilities.setCapability("enableVNC", true);
         capabilities.setCapability("enableVideo", true);
 
+        Configuration.browserCapabilities = capabilities;
         Configuration.baseUrl = "http://demowebshop.tricentis.com";
         RestAssured.baseURI = "http://demowebshop.tricentis.com";
         String remoteBrowser = System.getProperty("remote", "selenoid.autotests.cloud/wd/hub");
