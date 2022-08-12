@@ -33,7 +33,7 @@ public class DemowebshopTests extends TestBase {
                 .then()
                 .log().all()
                 .statusCode(302)
-                .extract().cookie(COOKIE_NAME);
+                .extract().header("Location");
 
         open("http://demowebshop.tricentis.com/registerresult/1");
         $(".result").shouldHave(Condition.text("Your registration completed"));
