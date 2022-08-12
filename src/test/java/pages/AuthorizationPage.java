@@ -1,12 +1,12 @@
 package pages;
 
 import com.codeborne.selenide.Condition;
-import com.codeborne.selenide.Selenide;
 import io.qameta.allure.Step;
 import org.openqa.selenium.Cookie;
 
 
 import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.open;
 import static helpers.CustomApiListener.withCustomTemplates;
 import static io.restassured.RestAssured.given;
 import static tests.TestData.*;
@@ -14,7 +14,7 @@ import static tests.TestData.*;
 public class AuthorizationPage {
     @Step("Open login page")
     public void openLoginPage() {
-        Selenide.open("http://demowebshop.tricentis.com/login");
+        open("http://demowebshop.tricentis.com/login");
     }
 
     @Step("Authorization API test")
